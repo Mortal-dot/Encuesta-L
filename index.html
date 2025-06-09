@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Encuesta La Eminencia</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 40px;
+      background-color: #f9f9f9;
+    }
+    h1 {
+      text-align: center;
+      font-size: 2.5em;
+      color: #8B0000;
+    }
+    form {
+      max-width: 600px;
+      margin: 0 auto;
+      background-color: #fff;
+      padding: 25px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    .question {
+      margin-bottom: 20px;
+    }
+    .question label {
+      display: block;
+      font-weight: bold;
+      margin-bottom: 8px;
+    }
+    .options {
+      margin-left: 20px;
+    }
+    input[type="submit"] {
+      display: block;
+      margin: 0 auto;
+      padding: 10px 25px;
+      font-size: 1em;
+      background-color: #8B0000;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    input[type="submit"]:hover {
+      background-color: #a30000;
+    }
+  </style>
+</head>
+<body>
+
+<h1>Encuesta "La Eminencia"</h1>
+<div style="text-align: center; margin-bottom: 20px;">
+  <img src="eminencia.jpeg" alt="Helado La Eminencia" style="width: 300px; height: auto; border-radius: 10px;">
+</div>
+
+  <form id="encuestaForm">
+    <p><strong>Encuesta sobre el nuevo helado artesanal "La Eminencia".</strong></p>
+
+    <div class="question">
+      <label>Edad:</label>
+      <div class="options">
+        <label><input type="radio" name="edad" value="13-20"> 13-20 años</label><br>
+        <label><input type="radio" name="edad" value="20-40"> 20-40 años</label><br>
+        <label><input type="radio" name="edad" value="40-50"> 40-50 años</label>
+      </div>
+    </div>
+
+    <div class="question">
+      <label>Provincia de residencia:</label>
+      <div class="options">
+        <label><input type="radio" name="provincia" value="San Jose Centro"> San José Centro</label><br>
+        <label><input type="radio" name="provincia" value="Alajuelita Centro"> Alajuelita Centro</label>
+      </div>
+    </div>
+
+    <div class="question">
+      <label>¿Con qué frecuencia consumes helado?</label>
+      <div class="options">
+        <label><input type="radio" name="frecuencia" value="Mucho"> Mucho</label><br>
+        <label><input type="radio" name="frecuencia" value="Poco"> Poco</label>
+      </div>
+    </div>
+
+    <div class="question">
+      <label>¿Conoces helados artesanales o caseros?</label>
+      <div class="options">
+        <label><input type="radio" name="conoce_artesanal" value="Si"> Sí</label><br>
+        <label><input type="radio" name="conoce_artesanal" value="No"> No</label>
+      </div>
+    </div>
+
+    <div class="question">
+      <label>¿Te gusta el nombre de la marca "La Eminencia" para una marca de helado?</label>
+      <div class="options">
+        <label><input type="radio" name="gusta_nombre" value="Si"> Sí</label><br>
+        <label><input type="radio" name="gusta_nombre" value="No"> No</label>
+      </div>
+    </div>
+
+    <div class="question">
+      <label>¿Te gustaría encontrar este helado en pulperías o casas de familia en tu comunidad?</label>
+      <div class="options">
+        <label><input type="radio" name="lugares_venta" value="Si"> Sí</label><br>
+        <label><input type="radio" name="lugares_venta" value="No"> No</label>
+      </div>
+    </div>
+
+    <div class="question">
+      <label>¿Te gusta la presentación?</label>
+      <div class="options">
+        <label><input type="radio" name="gusta_presentacion" value="Si"> Sí</label><br>
+        <label><input type="radio" name="gusta_presentacion" value="No"> No</label>
+      </div>
+    </div>
+
+    <div class="question">
+      <label>¿Cuánto pagarías por un helado artesanal (unidad)?</label>
+      <div class="options">
+        <label><input type="radio" name="precio" value="350"> 350</label><br>
+        <label><input type="radio" name="precio" value="400"> 400</label><br>
+        <label><input type="radio" name="precio" value="500"> 500</label>
+      </div>
+    </div>
+
+    <div class="question">
+      <label>¿Comprarías este producto si lo ves en una tienda local?</label>
+      <div class="options">
+        <label><input type="radio" name="compraria" value="Si"> Sí</label><br>
+        <label><input type="radio" name="compraria" value="No"> No</label>
+      </div>
+    </div>
+
+    <input type="submit" value="Enviar respuestas">
+  </form>
+
+  <script>
+    document.getElementById("encuestaForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+
+      function obtenerRespuesta(nombre) {
+        const seleccionado = document.querySelector(`input[name="${nombre}"]:checked`);
+        return seleccionado ? seleccionado.value : "Sin respuesta";
+      }
+
+      let mensaje = "*Resultados de la encuesta La Eminencia:*\n\n";
+      mensaje += "1. Edad: " + obtenerRespuesta("edad") + "\n";
+      mensaje += "2. Provincia: " + obtenerRespuesta("provincia") + "\n";
+      mensaje += "3. Frecuencia de consumo: " + obtenerRespuesta("frecuencia") + "\n";
+      mensaje += "4. ¿Conoce helado artesanal?: " + obtenerRespuesta("conoce_artesanal") + "\n";
+      mensaje += "5. ¿Le gusta el nombre?: " + obtenerRespuesta("gusta_nombre") + "\n";
+      mensaje += "6. ¿Le gustaría encontrarlo en su comunidad?: " + obtenerRespuesta("lugares_venta") + "\n";
+      mensaje += "7. ¿Le gusta la presentación?: " + obtenerRespuesta("gusta_presentacion") + "\n";
+      mensaje += "8. ¿Cuánto pagaría?: " + obtenerRespuesta("precio") + "\n";
+      mensaje += "9. ¿Lo compraría si lo ve en tienda?: " + obtenerRespuesta("compraria") + "\n";
+
+      const telefono = "50672530886"; // ← Reemplaza con tu número de WhatsApp (sin el +)
+      const url = `https://wa.me/${telefono}?text=${encodeURIComponent(mensaje)}`;
+
+      window.open(url, "_blank");
+    });
+  </script>
+
+</body>
+</html>
+
